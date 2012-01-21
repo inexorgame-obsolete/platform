@@ -14,6 +14,5 @@ directory of OctaForge in order to compile.
 
 The package exactly contains:
 
-zlib - licensed under the zlib license.
-SDL(_mixer,_image) - LGPL.
-libcurl - MIT.
+SDL+_mixer,_image and zlib are zlib licensed.
+libcurl is MIT licensed.
