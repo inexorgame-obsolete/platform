@@ -15,9 +15,4 @@ directory of OctaForge in order to compile.
 Please note that MinGW builds (default) do not use the import libraries and
 instead they link directly against the DLLs in the respective directory.
 
-Visual Studio builds do not work for now (missing support for some features).
-
-The package exactly contains:
-
-SDL+_mixer,_image and zlib are zlib licensed.
-libcurl is MIT licensed.
+SDL2+_mixer,_image and zlib are zlib licensed.
