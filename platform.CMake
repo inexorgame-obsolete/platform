@@ -1,0 +1,12 @@
+set(WIN_BIN_DIR_NAME bin_win)
+
+if(TIG_TARGET_X64)
+    set(WIN_BIN_DIR_NAME ${WIN_BIN_DIR_NAME}64)
+else()
+    set(WIN_BIN_DIR_NAME ${WIN_BIN_DIR_NAME}32)
+
+    install(
+        DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${WIN_BIN_DIR_NAME}
+        DESTINATION ${INSTALL_BIN_DIR}/..
+        PATTERN "*")
+else()
