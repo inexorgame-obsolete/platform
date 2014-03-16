@@ -9,4 +9,4 @@ else()
         DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${WIN_BIN_DIR_NAME}
         DESTINATION ${INSTALL_BIN_DIR}/..
         PATTERN "*")
-else()
+endif()
