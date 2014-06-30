@@ -3,14 +3,22 @@ SET(CMAKE_SYSTEM_NAME Windows)
 
 # Choose an appropriate compiler prefix
 
+set(MINGW_TYPE "i686" CACHE DOC "Cross compilation mingw type, can be classic, i686 or x86_64")
+
 # for classical mingw32
 # see http://www.mingw.org/
-#set(COMPILER_PREFIX "i586-mingw32msvc")
+if("${MINGW_TYPE}" STREQUAL "classic")
+    set(COMPILER_PREFIX "i586-mingw32msvc")
 
-# for 32 or 64 bits mingw-w64
-# see http://mingw-w64.sourceforge.net/
-set(COMPILER_PREFIX "i686-w64-mingw32")
-#set(COMPILER_PREFIX "x86_64-w64-mingw32"
+    # for 32 or 64 bits mingw-w64
+    # see http://mingw-w64.sourceforge.net/
+elseif("${MINGW_TYPE}" STREQUAL "i686")
+    set(COMPILER_PREFIX "i686-w64-mingw32")
+elseif("${MINGW_TYPE}" STREQUAL "x86_64")
+    set(COMPILER_PREFIX "x86_64-w64-mingw32")
+else()
+    message(FATAL_ERROR "Invalid MINGW_TYPE")
+endif()
 
 # which compilers to use for C and C++
 find_program(CMAKE_RC_COMPILER NAMES ${COMPILER_PREFIX}-windres)
