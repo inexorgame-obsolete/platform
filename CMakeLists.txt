@@ -1,7 +1,9 @@
-# Install files to the rest of the binaries
+### Windows Specific files and definitions
+
+# Install shared libs to the Executable output dir
 install(
-    DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${BIN_INSTALL_DIR}
-    DESTINATION ${BUILD_INSTALL_BIN_DIR}
+    DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${EXE_SUB_DIR}
+    DESTINATION ${EXE_DIR}
     PATTERN "*")
 
 # zlib compressing
@@ -19,8 +21,7 @@ set(SDL2_LIBRARIES "SDL2;SDL2_image;SDL2_mixer" CACHE INTERNAL "" FORCE)
 set(ENET_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/include CACHE INTERNAL "")
 set(ENET_LIBRARIES "enet"  CACHE INTERNAL "")
 
-# Set linker directories
+# Set Linker folder
 set(PLATFORM_LINK_DIRECTORIES
-    ${CMAKE_CURRENT_SOURCE_DIR}/lib/${PROJECT_ARCH}
-    ${CMAKE_CURRENT_SOURCE_DIR}/${BIN_INSTALL_DIR} PARENT_SCOPE)
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/${PROJECT_ARCH} PARENT_SCOPE)
 
