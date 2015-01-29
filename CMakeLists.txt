@@ -2,7 +2,7 @@
 
 # Install shared libs to the Executable output dir
 install(
-    DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${EXE_SUB_DIR}
+    DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${EXE_SUB_DIR}/
     DESTINATION ${EXE_DIR}
     PATTERN "*")
 
