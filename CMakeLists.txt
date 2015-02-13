@@ -6,6 +6,11 @@ install(
     DESTINATION ${EXE_DIR}
     PATTERN "*")
 
+# Path to the protoc generator
+if("${CMAKE_HOST_SYSTEM_NAME}" STREQUAL "Windows") # Crosscompiler has it globally already
+  set(PROTOC_EXE "${CMAKE_CURRENT_SOURCE_DIR}/tool/protoc" CACHE INTERNAL "")
+endif()
+
 # zlib compressing
 set(ZLIB_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include" CACHE INTERNAL "")
 set(ZLIB_LIBRARY zdll CACHE INTERNAL "")
