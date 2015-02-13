@@ -11,6 +11,9 @@ if("${CMAKE_HOST_SYSTEM_NAME}" STREQUAL "Windows") # Crosscompiler has it global
   set(PROTOC_EXE "${CMAKE_CURRENT_SOURCE_DIR}/tool/protoc" CACHE INTERNAL "")
 endif()
 
+# Protobuf should not require RTTI (disabled for msvc by default, really slow for mingw)
+add_definitions(-DGOOGLE_PROTOBUF_NO_RTTI)
+
 # zlib compressing
 set(ZLIB_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include" CACHE INTERNAL "")
 set(ZLIB_LIBRARY zdll CACHE INTERNAL "")
