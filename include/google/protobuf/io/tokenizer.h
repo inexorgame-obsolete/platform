@@ -1,6 +1,6 @@
 // Protocol Buffers - Google's data interchange format
 // Copyright 2008 Google Inc.  All rights reserved.
-// https://developers.google.com/protocol-buffers/
+// http://code.google.com/p/protobuf/
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are
@@ -350,7 +350,7 @@ class LIBPROTOBUF_EXPORT Tokenizer {
 
   // -----------------------------------------------------------------
   // These helper methods make the parsing code more readable.  The
-  // "character classes" referred to are defined at the top of the .cc file.
+  // "character classes" refered to are defined at the top of the .cc file.
   // Basically it is a C++ class with one method:
   //   static bool InClass(char c);
   // The method returns true if c is a member of this "class", like "Letter"

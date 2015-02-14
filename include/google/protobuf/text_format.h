@@ -1,6 +1,6 @@
 // Protocol Buffers - Google's data interchange format
 // Copyright 2008 Google Inc.  All rights reserved.
-// https://developers.google.com/protocol-buffers/
+// http://code.google.com/p/protobuf/
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are
@@ -40,9 +40,6 @@
 
 #include <map>
 #include <memory>
-#ifndef _SHARED_PTR_H
-#include <google/protobuf/stubs/shared_ptr.h>
-#endif
 #include <string>
 #include <vector>
 
@@ -271,7 +268,7 @@ class LIBPROTOBUF_EXPORT TextFormat {
 
     bool print_message_fields_in_index_order_;
 
-    google::protobuf::scoped_ptr<const FieldValuePrinter> default_field_value_printer_;
+    scoped_ptr<const FieldValuePrinter> default_field_value_printer_;
     typedef map<const FieldDescriptor*,
                 const FieldValuePrinter*> CustomPrinterMap;
     CustomPrinterMap custom_printers_;
