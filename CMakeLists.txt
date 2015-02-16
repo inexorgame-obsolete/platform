@@ -34,7 +34,17 @@ set(ASIO_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/include CACHE INTERNAL "")
 
 # Protobuf Serialization Format
 set(PROTOBUF_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/include CACHE INTERNAL "")
-set(PROTOBUF_LIBRARIES "protobuf"  CACHE INTERNAL "")
+set(PROTOBUF_LIBRARIES_GNU          "protobuf"  CACHE INTERNAL "")
+set(PROTOBUF_LIBRARIES_MSVC_RELEASE "protobuf_release"  CACHE INTERNAL "")
+set(PROTOBUF_LIBRARIES_MSVC_DEBUG   "protobuf_debug"  CACHE INTERNAL "")
+
+# C++ Libraries depending on the stdlib are NOT binary compatible for different VS versions. 
+# Also a debug .lib is incompatible to Inexor in releasemode and vice versa then.
+if(MSVC)
+    set(PROTOBUF_LIBRARIES "" CACHE INTERNAL "")
+else()
+    set(PROTOBUF_LIBRARIES ${PROTOBUF_LIBRARIES_GNU} CACHE INTERNAL "")
+endif()
 
 # Set Linker folder
 set(PLATFORM_LINK_DIRECTORIES

@@ -344,7 +344,6 @@ class LIBPROTOBUF_EXPORT LimitingInputStream : public ZeroCopyInputStream {
  private:
   ZeroCopyInputStream* input_;
   int64 limit_;  // Decreases as we go, becomes negative if we overshoot.
-  int64 prior_bytes_read_;  // Bytes read on underlying stream at construction
 
   GOOGLE_DISALLOW_EVIL_CONSTRUCTORS(LimitingInputStream);
 };
