@@ -1,6 +1,3 @@
-### Windows Specific files and definitions
-
-
 # Install shared libs to the Executable output dir
 install(
     DIRECTORY ${pwd}/${EXE_SUB_DIR}/
