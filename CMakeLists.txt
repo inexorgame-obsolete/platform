@@ -29,6 +29,14 @@ set(ENV{CMAKE_LIBRARY_PATH}                 # libs
   ${pwd}/lib/${targ}${arch}${mode}
   $ENV{CMAKE_LIBRARY_PATH} CACHE INTERNAL "")
 
+message(STATUS "PLATFORM WINDOWS: mode=${mode}")
+message(STATUS "PLATFORM WINDOWS: host=${host}")
+message(STATUS "PLATFORM WINDOWS: targ=${targ}")
+message(STATUS "PLATFORM WINDOWS: targ=${arch}")
+message(STATUS "PLATFORM WINDOWS: PATH=$ENV{PATH}")
+message(STATUS "PLATFORM WINDOWS: CMAKE_INCLUDE_PATH=$ENV{CMAKE_INCLUDE_PATH}")
+message(STATUS "PLATFORM WINDOWS: CMAKE_LIBRARY_PATH=$ENV{CMAKE_LIBRARY_PATH}")
+
 if (MSVC)
   add_definitions(-DPROTOBUF_USE_DLLS)
 endif()
