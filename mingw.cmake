@@ -1,14 +1,21 @@
+
+message(STATUS "Using the MinGW toolchain file")
+
 # Choose an appropriate compiler prefix
 
-set(MINGW_TYPE "i686" CACHE DOC "Cross compilation mingw type, can be classic, i686 or x86_64")
+if(CMAKE_SYSTEM_PROCESSOR MATCHES "amd64|x86_64|AMD64")
+    set(MINGW_TYPE "x86_64" CACHE DOC "Cross compilation mingw type, can be classic, i686 or x86_64")
+else()
+    set(MINGW_TYPE "i686" CACHE DOC "Cross compilation mingw type, can be classic, i686 or x86_64")
+endif()
 
-if("${MINGW_TYPE}" STREQUAL "i686")
+if(${MINGW_TYPE} STREQUAL "i686")
     set(COMPILER_PREFIX "i686-w64-mingw32")
-    set(arch i686)
-elseif("${MINGW_TYPE}" STREQUAL "x86_64")
+    set(SHORT_ARCH "win32")
+elseif(${MINGW_TYPE} STREQUAL "x86_64")
     set(COMPILER_PREFIX "x86_64-w64-mingw32")
-    set(arch x86_64)
-elseif("${MINGW_TYPE}" STREQUAL "classic")
+    set(SHORT_ARCH "win64")
+elseif(${MINGW_TYPE} STREQUAL "classic")
     message(FATAL_ERROR "Sorry, classic mingw is no longer supported. Use https://mingw-w64.sourceforge.net/")
 else()
     message(FATAL_ERROR "Invalid MINGW_TYPE")
@@ -33,9 +40,8 @@ if(NOT WIN32)
   set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 endif()
 
-set(build_config "")
 set(targ "mingw")
 set(sep ":")
 
-get_filename_component(pwd ${CMAKE_CURRENT_LIST_FILE} PATH)
-include(${pwd}/common_windows.cmake)
+get_filename_component(PLATFORM_REPO_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+include(${PLATFORM_REPO_DIR}/common_windows.cmake)
