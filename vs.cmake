@@ -1,7 +1,10 @@
-
 message(STATUS "Using the Visual Studio Toolchain file")
 
+set(CMAKE_SYSTEM_NAME Windows)
+
 set(targ "vs2013")
+set(targ_os "win")
+set(sep ";")
 
 # Check Architecture
 if(CMAKE_GENERATOR MATCHES ".*64.*")
@@ -13,7 +16,6 @@ endif()
 add_definitions(-DPROTOBUF_USE_DLLS)
 
 get_filename_component(PLATFORM_REPO_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
-include(${PLATFORM_REPO_DIR}/common_windows.cmake)
 
 # Wrapper around find_library to autodetect _debug and _release versions of a library
 # Documentation: See find_cpp_library in src/cmakelists.txt
@@ -31,3 +33,4 @@ endfunction()
 
 set(HAS_FIND_LIBRARY_WRAPPER 1)
 
+include(${PLATFORM_REPO_DIR}/common.cmake)

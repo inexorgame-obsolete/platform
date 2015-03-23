@@ -18,7 +18,7 @@ In order to tackle this problem we maintain separate folders
 for each target with directories. We use the following
 naming scheme:
 
-  COMPILER-ARCH-MODE
+  COMPILER-ARCH
 
 where COMPILER is either mingw or vs13 (we only support vs
 2013), ARCH is i686 or x86_64 and mode is Debug or Release.
