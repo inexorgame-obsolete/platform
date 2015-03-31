@@ -1,12 +1,23 @@
 
 message(STATUS "Using the MinGW toolchain file")
 
+set(targ "mingw")
+
 # Choose an appropriate compiler prefix
 
-if(CMAKE_SYSTEM_PROCESSOR MATCHES "amd64|x86_64|AMD64")
-    set(MINGW_TYPE "x86_64" CACHE DOC "Cross compilation mingw type, can be classic, i686 or x86_64")
-else()
-    set(MINGW_TYPE "i686" CACHE DOC "Cross compilation mingw type, can be classic, i686 or x86_64")
+if(NOT DEFINED MINGW_TYPE)
+  if(CMAKE_SYSTEM_PROCESSOR MATCHES "amd64|x86_64|AMD64")
+      set(MINGW_TYPE "x86_64" CACHE DOC "Cross compilation mingw type, can be classic, i686 or x86_64")
+  else()
+      set(MINGW_TYPE "i686" CACHE DOC "Cross compilation mingw type, can be classic, i686 or x86_64")
+  endif()
+
+  # Special Scenario sometimes on windows 64 bit (since cmake_system_processor is really inacurate)
+  if($ENV{PROCESSOR_ARCHITEW6432} MATCHES "IA64|AMD64")
+      set(MINGW_TYPE "x86_64" CACHE DOC "Cross compilation mingw type, can be classic, i686 or x86_64")
+  else()
+      set(MINGW_TYPE "i686" CACHE DOC "Cross compilation mingw type, can be classic, i686 or x86_64")      
+  endif()
 endif()
 
 if(${MINGW_TYPE} STREQUAL "i686")
@@ -39,9 +50,6 @@ if(NOT WIN32)
   set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
   set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 endif()
-
-set(targ "mingw")
-set(sep ":")
 
 get_filename_component(PLATFORM_REPO_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
 include(${PLATFORM_REPO_DIR}/common_windows.cmake)

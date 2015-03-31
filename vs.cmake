@@ -2,7 +2,6 @@
 message(STATUS "Using the Visual Studio Toolchain file")
 
 set(targ "vs2013")
-set(sep ";")
 
 # Check Architecture
 if(CMAKE_GENERATOR MATCHES ".*64.*")
