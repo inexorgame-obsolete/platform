@@ -2,7 +2,9 @@ set(targ "linux")
 set(targ_os "linux")
 set(sep ";")
 
-if(CMAKE_SIZEOF_VOID_P MATCHES 8)
+# TODO: Get rid of this terrible workaround
+execute_process(COMMAND uname -m OUTPUT_VARIABLE uname_arch)
+if(uname_arch MATCHES "x86_64")
   set(SHORT_ARCH "x86_64")
 else()
   set(SHORT_ARCH "i686")
