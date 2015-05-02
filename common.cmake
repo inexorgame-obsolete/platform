@@ -16,6 +16,12 @@ list(INSERT CMAKE_INCLUDE_PATH 0
 list(INSERT CMAKE_LIBRARY_PATH 0
   "${pwd}/lib/${targ}-${SHORT_ARCH}"
   "${pwd}/lib/${targ_os}-${SHORT_ARCH}")
+list(INSERT CMAKE_RESOURCES_PATH 0
+    ${pwd}/res/${targ}-${SHORT_ARCH}
+    ${pwd}/res/${targ}
+    ${pwd}/res/${targ_os}-${SHORT_ARCH}
+    ${pwd}/res/${targ_os}
+    ${pwd}/res/all)
 
 foreach(dir ${CMAKE_LIBRARY_PATH})
   file(GLOB dlls "${dir}/*.dll")
@@ -24,7 +30,7 @@ foreach(dir ${CMAKE_LIBRARY_PATH})
   list(APPEND INSTALL_SHARED_LIBS ${sos})
 endforeach()
 
-foreach(dir ${pwd}/exe/${targ_os}-${SHORT_ARCH})
+foreach(dir ${CMAKE_RESOURCES_PATH})
   file(GLOB exes "${dir}/*")
   list(APPEND INSTALL_EXES ${exes})
 endforeach()
