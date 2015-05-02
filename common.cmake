@@ -30,6 +30,7 @@ foreach(dir ${CMAKE_LIBRARY_PATH})
   list(APPEND INSTALL_SHARED_LIBS ${sos})
 endforeach()
 
+# TODO: Install the cef locales: We need something that installs files and dirs
 foreach(dir ${CMAKE_RESOURCES_PATH})
   file(GLOB exes "${dir}/*")
   list(APPEND INSTALL_EXES ${exes})
