@@ -26,8 +26,11 @@ function(definition_find_cpp_library RETURNVAR LIBNAME)
     find_library(${RETURNVAR}_RELEASE "${LIBNAME}_release")
 
     if(${RETURNVAR}_DEBUG AND ${RETURNVAR}_RELEASE)
-        set(${RETURNVAR} ${${RETURNVAR}_DEBUG} ${${RETURNVAR}_RELEASE} CACHE INTERNAL "found cpp lib")
+        set(${RETURNVAR} ${${RETURNVAR}_DEBUG} ${${RETURNVAR}_RELEASE} PARENT_SCOPE)
     endif()
+
+    unset(${RETURNVAR}_DEBUG CACHE)
+    unset(${RETURNVAR}_RELEASE CACHE)
 
 endfunction()
 
