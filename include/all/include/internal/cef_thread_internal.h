@@ -32,6 +32,7 @@
 #pragma once
 
 #if defined(OS_WIN)
+#define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #elif defined(OS_POSIX)
 #include <pthread.h>

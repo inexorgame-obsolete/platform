@@ -32,7 +32,7 @@
 
 #ifndef CEF_INCLUDE_BASE_INTERNAL_CEF_ATOMICOPS_X86_MSVC_H_
 #define CEF_INCLUDE_BASE_INTERNAL_CEF_ATOMICOPS_X86_MSVC_H_
-
+#define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 
 #include <intrin.h>
