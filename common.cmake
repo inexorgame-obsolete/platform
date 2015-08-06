@@ -35,3 +35,6 @@ foreach(dir ${CMAKE_RESOURCES_PATH})
   file(GLOB exes "${dir}/*")
   list(APPEND INSTALL_EXES ${exes})
 endforeach()
+
+# Install the portable node version (on windows only currently)
+list(APPEND INSTALL_EXES ${pwd}/bin/${targ_os}/${SHORT_ARCH}/node.exe)
