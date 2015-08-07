@@ -17,11 +17,11 @@ list(INSERT CMAKE_LIBRARY_PATH 0
   "${pwd}/lib/${targ}-${SHORT_ARCH}"
   "${pwd}/lib/${targ_os}-${SHORT_ARCH}")
 list(INSERT CMAKE_RESOURCES_PATH 0
-    ${pwd}/res/${targ}-${SHORT_ARCH}
-    ${pwd}/res/${targ}
-    ${pwd}/res/${targ_os}-${SHORT_ARCH}
-    ${pwd}/res/${targ_os}
-    ${pwd}/res/all)
+    ${pwd}/resources/${targ}-${SHORT_ARCH}
+    ${pwd}/resources/${targ}
+    ${pwd}/resources/${targ_os}-${SHORT_ARCH}
+    ${pwd}/resources/${targ_os}
+    ${pwd}/resources/all)
 
 foreach(dir ${CMAKE_LIBRARY_PATH})
   file(GLOB dlls "${dir}/*.dll")
