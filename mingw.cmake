@@ -1,7 +1,15 @@
 message(STATUS "Using the MinGW toolchain file")
 
-set(targ "mingw")
 set(CMAKE_SYSTEM_NAME Windows)
+
+set(targ "mingw")
+set(targ_os "windows")
+
+if (WIN32)
+  set(sep ";") # needed for appends to the PATH
+else()
+  set(sep ";")
+endif()
 
 # Choose an appropriate compiler prefix
 
@@ -51,15 +59,6 @@ if(NOT WIN32)
   set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
   set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 endif()
-
-set(targ "mingw")
-set(targ_os "win")
-if (WIN32)
-  set(sep ";")
-else()
-  set(sep ";")
-endif()
-
 
 get_filename_component(PLATFORM_REPO_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
 include(${PLATFORM_REPO_DIR}/common.cmake)

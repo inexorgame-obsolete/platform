@@ -3,7 +3,7 @@ message(STATUS "Using the Visual Studio Toolchain file")
 set(CMAKE_SYSTEM_NAME Windows)
 
 set(targ "vs2013")
-set(targ_os "win")
+set(targ_os "windows")
 set(sep ";")
 
 # Check Architecture
