@@ -37,4 +37,6 @@ foreach(dir ${CMAKE_RESOURCES_PATH})
 endforeach()
 
 # Install the portable node version (on windows only currently)
-list(APPEND INSTALL_EXES ${pwd}/bin/${targ_os}/${SHORT_ARCH}/node.exe)
+if(WIN32)
+  list(APPEND INSTALL_EXES ${pwd}/bin/${targ_os}/${SHORT_ARCH}/node.exe)
+endif()
