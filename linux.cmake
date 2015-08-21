@@ -7,7 +7,7 @@ execute_process(COMMAND uname -m OUTPUT_VARIABLE uname_arch)
 if(uname_arch MATCHES "x86_64")
   set(SHORT_ARCH "x86_64")
 else()
-  set(SHORT_ARCH "i686")
+  set(SHORT_ARCH "i386")
 endif()
 
 
