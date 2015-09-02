@@ -2,6 +2,9 @@ get_filename_component(PLATFORM_REPO_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
 string(TOLOWER "${CMAKE_HOST_SYSTEM_NAME}" host)
 set(pwd ${PLATFORM_REPO_DIR})
 
+if(NOT PLATFORM_INCLUDE_GUARD)
+list(INSERT PLATFORM_INCLUDE_GUARD 0 "1")
+
 list(INSERT CMAKE_PROGRAM_PATH 0
   ${pwd}/tool/${host}-${targ}
   ${pwd}/tool/${host})
@@ -41,3 +44,5 @@ if(WIN32)
   list(APPEND INSTALL_EXES "${pwd}/bin/${targ_os}/${SHORT_ARCH}/node.exe")
   list(APPEND INSTALL_PORTABLE_DIR "${pwd}/bin/${targ_os}/all/npm")
 endif()
+
+endif() # Include guard
