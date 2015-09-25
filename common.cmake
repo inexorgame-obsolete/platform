@@ -8,7 +8,6 @@ list(INSERT PLATFORM_INCLUDE_GUARD 0 "1")
 list(INSERT CMAKE_PROGRAM_PATH 0
   ${pwd}/tool/${host}-${targ}
   ${pwd}/tool/${host})
-message(STATUS "CMAKE_PROGRAM_PATH : ${CMAKE_PROGRAM_PATH}")
 list(INSERT CMAKE_FIND_ROOT_PATH 0 ${pwd})
 list(INSERT CMAKE_INCLUDE_PATH 0
     ${pwd}/include/${targ}-${SHORT_ARCH}
@@ -44,5 +43,10 @@ if(WIN32)
   list(APPEND INSTALL_EXES "${pwd}/bin/${targ_os}/${SHORT_ARCH}/node.exe")
   list(APPEND INSTALL_PORTABLE_DIR "${pwd}/bin/${targ_os}/all/npm")
 endif()
+
+message(STATUS "CMAKE_PROGRAM_PATH = ${CMAKE_PROGRAM_PATH}")
+message(STATUS "CMAKE_LIBRARY_PATH = ${CMAKE_LIBRARY_PATH}")
+message(STATUS "CMAKE_INCLUDE_PATH = ${CMAKE_INCLUDE_PATH}")
+message(STATUS "INSTALL_EXES       = ${INSTALL_EXES}")
 
 endif() # Include guard
