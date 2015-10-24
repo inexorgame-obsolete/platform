@@ -1,5 +1,5 @@
-This repository contains pre build libraries aand headers
-that can be used to compile Inexor on Windows.
+This repository contains pre build libraries and headers
+that can be used to compile Inexor.
 
 # License
 
