@@ -24,6 +24,8 @@ list(INSERT CMAKE_RESOURCES_PATH 0
     ${pwd}/resources/${targ_os}-${SHORT_ARCH}
     ${pwd}/resources/${targ_os}
     ${pwd}/resources/all)
+	
+install(DIRECTORY "${pwd}/resources/all/locales/" DESTINATION "${PROJECT_SOURCE_DIR}/bin/all/locales")
 
 foreach(dir ${CMAKE_LIBRARY_PATH})
   file(GLOB dlls "${dir}/*.dll")
@@ -32,10 +34,15 @@ foreach(dir ${CMAKE_LIBRARY_PATH})
   list(APPEND INSTALL_SHARED_LIBS ${sos})
 endforeach()
 
-# TODO: Install the cef locales: We need something that installs files and dirs
 foreach(dir ${CMAKE_RESOURCES_PATH})
-  file(GLOB exes "${dir}/*")
-  list(APPEND INSTALL_EXES ${exes})
+  file(GLOB exes LIST_DIRECTORIES false RELATIVE ${PROJECT_SOURCE_DIR} "${dir}/*")
+  
+  # CMake < 3.3 doesn't know LIST_DIRECTORIES false
+  if(CMAKE_VERSION LESS 3.3)
+    list(REMOVE_ITEM exes "inexor/platform/resources/all/locales")
+  endif()
+  
+  list(APPEND INSTALL_RESOURCES ${exes})
 endforeach()
 
 # Install the portable node version + npm (on windows only currently)
