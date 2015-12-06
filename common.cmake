@@ -24,7 +24,8 @@ list(INSERT CMAKE_RESOURCES_PATH 0
     ${pwd}/resources/${targ_os}-${SHORT_ARCH}
     ${pwd}/resources/${targ_os}
     ${pwd}/resources/all)
-	
+
+# TODO: Use install(DIRECTORY) to install without manually searching the resource paths
 install(DIRECTORY "${pwd}/resources/all/locales/" DESTINATION "${PROJECT_SOURCE_DIR}/bin/all/locales")
 
 foreach(dir ${CMAKE_LIBRARY_PATH})
@@ -39,7 +40,7 @@ foreach(dir ${CMAKE_RESOURCES_PATH})
   
   # CMake < 3.3 doesn't know LIST_DIRECTORIES false
   if(CMAKE_VERSION LESS 3.3)
-    list(REMOVE_ITEM exes "inexor/platform/resources/all/locales")
+    list(REMOVE_ITEM exes "${pwd}/resources/all/locales")
   endif()
   
   list(APPEND INSTALL_RESOURCES ${exes})
