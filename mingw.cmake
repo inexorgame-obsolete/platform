@@ -4,7 +4,11 @@ set(CMAKE_SYSTEM_NAME Windows)
 
 set(targ "mingw")
 set(targ_os "windows")
-set(sep ";") # needed for appends to the PATH
+if(WIN32)
+  set(sep ";") # needed for appends to the PATH
+else()
+  set(sep ":")
+endif()
 
 # Choose an appropriate compiler prefix
 
