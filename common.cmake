@@ -36,12 +36,11 @@ foreach(dir ${CMAKE_LIBRARY_PATH})
 endforeach()
 
 foreach(dir ${CMAKE_RESOURCES_PATH})
-  file(GLOB exes LIST_DIRECTORIES false RELATIVE ${PROJECT_SOURCE_DIR} "${dir}/*")
-  
-  # CMake < 3.3 doesn't know LIST_DIRECTORIES false
-  if(CMAKE_VERSION LESS 3.3)
-    list(REMOVE_ITEM exes "${pwd}/resources/all/locales")
-  endif()
+  file(GLOB exes RELATIVE ${PROJECT_SOURCE_DIR} "${dir}/*")
+
+  # CMake < 3.3 doesn't know LIST_DIRECTORIES false; we do
+  # not use it on newer versions either to avoid hiding errors
+  list(REMOVE_ITEM exes "platform/resources/all/locales")
   
   list(APPEND INSTALL_RESOURCES ${exes})
 endforeach()
