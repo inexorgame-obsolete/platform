@@ -44,11 +44,11 @@ foreach(dir ${CMAKE_RESOURCES_PATH})
   
   list(APPEND INSTALL_RESOURCES ${exes})
 endforeach()
-
-# Install the portable node version + npm (on windows only currently)
+ 
+# Install the portable node version (on windows only currently)
 if(WIN32)
   list(APPEND INSTALL_EXES "${pwd}/bin/${targ_os}/${SHORT_ARCH}/node.exe")
-  list(APPEND INSTALL_PORTABLE_DIR "${pwd}/bin/${targ_os}/all/npm")
+ # list(APPEND INSTALL_ADDITIONAL_DEV_TOOLS "${pwd}/bin/${targ_os}/all/npm")
 endif()
 
 message(STATUS "CMAKE_PROGRAM_PATH   = ${CMAKE_PROGRAM_PATH}")
