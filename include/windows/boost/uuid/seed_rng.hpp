@@ -37,15 +37,17 @@
 //#include <boost/generator_iterator.hpp>
 # include <boost/iterator/iterator_facade.hpp>
 
+#if defined(BOOST_WINDOWS)
 #if defined(_MSC_VER)
 #   pragma warning(push) // Save warning settings.
 #   pragma warning(disable : 4996) // Disable deprecated std::fopen
+#   pragma comment(lib, "advapi32.lib")
+#endif // _MSC_VER
 #   include <boost/detail/winapi/crypt.hpp> // for CryptAcquireContextA, CryptGenRandom, CryptReleaseContext
 #   include <boost/detail/winapi/timers.hpp>
 #   include <boost/detail/winapi/process.hpp>
 #   include <boost/detail/winapi/thread.hpp>
-#   pragma comment(lib, "advapi32.lib")
-#else 
+#else
 #   include <sys/time.h>  // for gettimeofday
 #   include <sys/types.h> // for pid_t
 #   include <unistd.h>    // for getpid()
@@ -104,7 +106,7 @@ public:
 
         std::memset(rd_, 0, sizeof(rd_));
     }
-    
+
     ~seed_rng() BOOST_NOEXCEPT
     {
         if (random_) {
