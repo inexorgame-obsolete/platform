@@ -31,8 +31,12 @@ install(DIRECTORY "${pwd}/resources/all/locales/" DESTINATION "${PROJECT_SOURCE_
 foreach(dir ${CMAKE_LIBRARY_PATH})
   file(GLOB dlls "${dir}/*.dll")
   file(GLOB sos "${dir}/*.so")
+  file(GLOB bins "${dir}/*.bin")
   list(APPEND INSTALL_SHARED_LIBS ${dlls})
   list(APPEND INSTALL_SHARED_LIBS ${sos})
+  list(APPEND INSTALL_SHARED_LIBS ${bins})
+  list(APPEND INSTALL_SHARED_LIBS "${dir}/chrome-sandbox")
+  list(APPEND INSTALL_SHARED_LIBS "${dir}/icudtl.dat")
 endforeach()
 
 foreach(dir ${CMAKE_RESOURCES_PATH})
