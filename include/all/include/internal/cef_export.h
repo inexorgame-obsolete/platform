@@ -34,12 +34,7 @@
 
 #include "include/base/cef_build.h"
 
-/*
- * It's reasonable to assume that when targetting windows, whatever the compiler is, it must obey it's
- * ABI semantics. At least mingw and mingw-w64 won't interoperate with CEF (which
- * itself is compiled on MSVC) without this.
- */
-#if defined(OS_WIN)
+#if defined(COMPILER_MSVC)
 
 #ifdef BUILDING_CEF_SHARED
 #define CEF_EXPORT __declspec(dllexport)
