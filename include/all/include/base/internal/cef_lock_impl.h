@@ -35,7 +35,6 @@
 #include "include/base/cef_build.h"
 
 #if defined(OS_WIN)
-#define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #elif defined(OS_POSIX)
 #include <pthread.h>
@@ -44,7 +43,7 @@
 #include "include/base/cef_macros.h"
 
 namespace base {
-namespace internal {
+namespace cef_internal {
 
 // This class implements the underlying platform-specific spin-lock mechanism
 // used for the Lock class.  Most users should not use LockImpl directly, but
@@ -82,7 +81,7 @@ class LockImpl {
   DISALLOW_COPY_AND_ASSIGN(LockImpl);
 };
 
-}  // namespace internal
+}  // namespace cef_internal
 }  // namespace base
 
 #endif  // CEF_INCLUDE_BASE_INTERNAL_CEF_LOCK_IMPL_H_
