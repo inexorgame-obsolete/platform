@@ -143,7 +143,7 @@ inline int fopen_s(FILE** fp, const filename_t& filename, const filename_t& mode
 #ifdef SPDLOG_WCHAR_FILENAMES
     *fp = _wfsopen((filename.c_str()), mode.c_str(), _SH_DENYWR);
 #else
-    *fp = _fsopen((filename.c_str()), mode.c_str(), _SH_DENYWR);
+    *fp = _fsopen((filename.c_str()), mode.c_str(), _SH_DENYRD);
 #endif
     return *fp == nullptr;
 #else
