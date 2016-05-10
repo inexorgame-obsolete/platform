@@ -29,3 +29,5 @@ which are used to compile Inexor.
 |    rapidjson                 | 1.0.2           |
 |    boost                     | 1.59            |
 |    spdlog                    | master (+mod) 17.04.16 |
+|  moodycamel concurrentqueue  | master 24.05.16 |
+|  moodycamel readwritequeue   | master 24.05.16 |
