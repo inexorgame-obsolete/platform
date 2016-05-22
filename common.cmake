@@ -25,9 +25,6 @@ list(INSERT CMAKE_RESOURCES_PATH 0
     ${pwd}/resources/${targ_os}
     ${pwd}/resources/all)
 
-# TODO: Use install(DIRECTORY) to install without manually searching the resource paths
-install(DIRECTORY "${pwd}/resources/all/locales/" DESTINATION "${PROJECT_SOURCE_DIR}/bin/all/locales")
-
 foreach(dir ${CMAKE_LIBRARY_PATH})
   file(GLOB dlls "${dir}/*.dll")
   file(GLOB sos "${dir}/*.so*")
@@ -35,14 +32,18 @@ foreach(dir ${CMAKE_LIBRARY_PATH})
   list(APPEND INSTALL_SHARED_LIBS ${sos})
 endforeach()
 
+# Look for resources
 foreach(dir ${CMAKE_RESOURCES_PATH})
-  file(GLOB exes RELATIVE ${PROJECT_SOURCE_DIR} "${dir}/*")
+  file(GLOB RES_FILES_AND_DIRS RELATIVE ${PROJECT_SOURCE_DIR} "${dir}/*")
 
-  # CMake < 3.3 doesn't know LIST_DIRECTORIES false; we do
-  # not use it on newer versions either to avoid hiding errors
-  list(REMOVE_ITEM exes "platform/resources/all/locales")
-  
-  list(APPEND INSTALL_RESOURCES ${exes})
+  # Install stuff differently if its inside a folder (cmake workaround)
+  foreach(ITEM ${RES_FILES_AND_DIRS})
+    if(IS_DIRECTORY "${PLATFORM_REPO_DIR}/../${ITEM}") # Full paths needed..
+      list(APPEND INSTALL_RESOURCES_FOLDERS ${ITEM})
+    else()
+      list(APPEND INSTALL_RESOURCES ${ITEM})
+    endif()
+  endforeach()
 endforeach()
  
 # Install the portable node version (on windows only currently)
