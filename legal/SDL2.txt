@@ -1,0 +1,4 @@
+## SDL Version 2, SDL Image, SDL Mixer
+
+SDL Version 2, SDL Image of v2/v2 and SDL Mixer v1/v2 are
+licensed under the ZLIB license (see legal/zlib)

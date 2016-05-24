@@ -30,7 +30,7 @@ install(DIRECTORY "${pwd}/resources/all/locales/" DESTINATION "${PROJECT_SOURCE_
 
 foreach(dir ${CMAKE_LIBRARY_PATH})
   file(GLOB dlls "${dir}/*.dll")
-  file(GLOB sos "${dir}/*.so")
+  file(GLOB sos "${dir}/*.so*")
   list(APPEND INSTALL_SHARED_LIBS ${dlls})
   list(APPEND INSTALL_SHARED_LIBS ${sos})
 endforeach()
