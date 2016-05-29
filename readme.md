@@ -21,7 +21,7 @@ which are used to compile Inexor.
 
 |    Library                   |     Version     |
 | ---------------------------- | --------------- |
-|    SDL2                      | 2.0.1           |
+|    SDL2                      | 2.0.4           |
 |    enet                      | 1.3.10          |
 |    protobuf                  | 3.0.0 beta3     |
 |    grpc                      | 0.14.1          |
