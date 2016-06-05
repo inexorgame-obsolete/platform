@@ -31,3 +31,4 @@ which are used to compile Inexor.
 |    spdlog                    | master (+mod) 17.04.16 |
 |  moodycamel concurrentqueue  | master 24.05.16 |
 |  moodycamel readwritequeue   | master 24.05.16 |
+|  kainjow mustache            | master 05.06.16 |
