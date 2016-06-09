@@ -8,6 +8,6 @@ In this package instead is a heavily shrinked portable msysgit (removed the unus
 and the portable version of npm.
 
 Resources:
-* Node.js v0.12.4 http://nodejs.org/dist/v0.12.4/
-* npm v1.4.9 http://nodejs.org/dist/npm/
+* Node.js v6.2.1 https://nodejs.org/dist/latest-v6.x/
+* npm v3.9.3 (included in the Node.js windows packages)
 * PortableGit 1.9.5 https://github.com/msysgit/msysgit/releases
