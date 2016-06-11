@@ -1,8 +1,12 @@
-:: modified by Inexor
-:: BE CAREFUL NOT TO BREAK THINKS HERE WHEN UPGRADING NPM
-:: NODE_EXE NEEDS TO BE DEFINED IN A WAY THAT WE ARE USING THE OUR SHIPPED VERSION OF NODE!
-:: NODE_EXE IS DEFINED IN tool/node_windows_generic_handler.bat
-:: called by tool/node_windows_generic_handler.bat
+:: Created by npm, please don't edit manually.
+@ECHO OFF
+
+SETLOCAL
+
+SET "NODE_EXE=%~dp0\node.exe"
+IF NOT EXIST "%NODE_EXE%" (
+  SET "NODE_EXE=node"
+)
 
 SET "NPM_CLI_JS=%~dp0\node_modules\npm\bin\npm-cli.js"
 FOR /F "delims=" %%F IN ('CALL "%NODE_EXE%" "%NPM_CLI_JS%" prefix -g') DO (
