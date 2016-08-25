@@ -28,6 +28,8 @@ list(INSERT CMAKE_INCLUDE_PATH 0
 list(INSERT CMAKE_LIBRARY_PATH 0
   ${pwd}/lib/${target}-${arch})
 
+link_directories(${pwd}/lib/${target}-${arch} ${pwd}/lib/${target}-${arch}/${subdir_debug} ${pwd}/lib/${target}-${arch}/${subdir_release})
+  
 list(INSERT CMAKE_RESOURCES_PATH 0
   ${pwd}/resources/${target}-${arch}
   ${pwd}/resources/${target}
