@@ -33,3 +33,4 @@ which are used to compile Inexor.
 |  moodycamel readwritequeue   | master 24.05.16 |
 |  kainjow mustache            | master 05.06.16 |
 |     doxygen                  | 1.8.12 w/o libclang    |
+|     pugixml                  | 1.7             |
