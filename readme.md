@@ -32,3 +32,4 @@ which are used to compile Inexor.
 |  moodycamel concurrentqueue  | master 24.05.16 |
 |  moodycamel readwritequeue   | master 24.05.16 |
 |  kainjow mustache            | master 05.06.16 |
+|     doxygen                  | 1.8.12 w/o libclang    |
