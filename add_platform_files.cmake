@@ -26,6 +26,7 @@ list(INSERT CMAKE_INCLUDE_PATH 0
     ${pwd}/include/all)
 
 list(INSERT CMAKE_LIBRARY_PATH 0
+  ${pwd}/lib/all
   ${pwd}/lib/${target}-${arch})
 
 link_directories(${pwd}/lib/${target}-${arch} ${pwd}/lib/${target}-${arch}/${subdir_debug} ${pwd}/lib/${target}-${arch}/${subdir_release})
@@ -37,14 +38,19 @@ list(INSERT CMAKE_RESOURCES_PATH 0
 
 
 # Look for shared libs (or other stuff which gets placed in the binary folder)
+# Appends to output list OUT_VAR_LIST.
 function(list_shared_libs_in_dir OUT_VAR_LIST DIRECTORY)
   file(GLOB dlls "${DIRECTORY}/*.dll")
   file(GLOB sos "${DIRECTORY}/*.so")
   file(GLOB bins "${DIRECTORY}/*.bin")
+  file(GLOB dats "${DIRECTORY}/*.dat") # some resources need to lay in the binary dir..
+
   list(APPEND LOCAL_LIST ${dlls})
   list(APPEND LOCAL_LIST ${sos})
   list(APPEND LOCAL_LIST ${bins})
-  set(${OUT_VAR_LIST} ${LOCAL_LIST} PARENT_SCOPE) # list doesn't allow PARENT_SCOPE
+  list(APPEND LOCAL_LIST ${dats})
+
+  set(${OUT_VAR_LIST} ${${OUT_VAR_LIST}} ${LOCAL_LIST} PARENT_SCOPE) # list doesn't allow PARENT_SCOPE
 endfunction()
 
 foreach(dir ${CMAKE_LIBRARY_PATH})
